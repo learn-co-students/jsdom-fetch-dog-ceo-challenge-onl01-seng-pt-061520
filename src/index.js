@@ -3,6 +3,12 @@ const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
 const breedUrl = 'https://dog.ceo/api/breeds/list/all'
 const lists = document.getElementsByTagName('li')
 
+document.addEventListener('DOMContentLoaded', function () {
+    fetchBreeds();
+    changeListColor();
+    breedDropdown();
+  });
+
 function renderImg(json) {
     const imgs = json.message
     const imgContainer = document.getElementById("dog-image-container")
@@ -57,11 +63,12 @@ function changeListColor() {
 
 function breedDropdown() {
     const breedSelector = document.getElementById("breed-dropdown")
-    breedSelector.addEventListener("change", fetchBreeds())
+    breedSelector.addEventListener("change", function() {
+        fetchBreeds()
+    })
 }
 
-fetchBreeds()
-changeListColor()
+
 
 
 
